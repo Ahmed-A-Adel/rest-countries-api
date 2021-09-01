@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rest-api-counterys</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+    <!-- style -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- script -->
+    <script module src="./src/script/controller.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h2 class="header__heading">where in the world</h2>
+      <div class="mode-switcher">
+        <span class="mode-switcher__icon"><i class="fas fa-moon"></i></span>
+        <!-- <span class="icon"><i class="far fa-moon"></i></span> -->
+        <p class="mode-switcher__heading">mode</p>
+      </div>
+    </header>
+    <section class="section">
+      <div class="section__search">
+        <label for="search" class="section__search__label"
+          >search for a countery...</label
+        >
+        <input
+          type="search"
+          name="search"
+          id="search"
+          class="section__search__text-input"
+        />
+        <span class="section__search__icon"><i class="fas fa-search"></i></span>
+      </div>
+      <div class="section__filter">
+        <select name="select" id="select" class="section__filter__select-input">
+          <option selected disabled value="">filter by region</option>
+          <option value="asia">asia</option>
+          <option value="africa">africa</option>
+          <option value="america">america</option>
+          <option value="euorep">euorep</option>
+          <option value="oceania">oceania</option>
+        </select>
+      </div>
+    </section>
+    <main class="main">
+      <article class="countery">
+        <div class="countery__image">
+          <img src="./src/images/egypt-flag.webp" alt="the egyption flag" />
+        </div>
+        <h3 class="countery__heading">egypt</h3>
+        <p class="countery__sub-heading">population: 120,000,000</p>
+        <p class="countery__sub-heading">region: africa</p>
+        <p class="countery__sub-heading">language: arabic</p>
+      </article>
+    </main>
+  </body>
+</html>

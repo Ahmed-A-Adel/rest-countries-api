@@ -1,0 +1,17 @@
+{
+  "name": "counter-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "sass:complier": "sass -w src/sass/main.scss style.css"
+  },
+  "author": "'Ahmed",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "live-server": "^1.2.1",
+    "sass": "^1.38.2"
+  }
+}
