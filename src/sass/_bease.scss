@@ -1,0 +1,66 @@
+/*
+
+- Mobile: 375px
+- Desktop: 1440px
+
+- Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+- Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+- Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+- Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+- Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+- White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
+
+- Homepage Items: 14px
+- Detail Page: 16px 
+
+ Family: [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans)
+- Weights: 300, 600, 800
+
+- [Font Awesome](https://fontawesome.com)
+- [IcoMoon](https://icomoon.io)
+- [Ionicons](https://ionicons.com)
+
+*/
+
+// _________________________________________________
+// ----------++++++++ Variables +++++++++++---------
+// _________________________________________________
+// Colors
+$Dark-Blue: hsl(209, 23%, 22%);
+$Very-Dark-Blue-d: hsl(207, 26%, 17%);
+$Very-Dark-Blue: hsl(200, 15%, 8%);
+$Dark-Gray: hsl(0, 0%, 52%);
+$Very-Light-Gray: hsl(0, 0%, 98%);
+$White: hsl(0, 0%, 100%);
+$main-font-size: 14px;
+$sub-font-size: 16px;
+$font-family: "Nunito Sans", sans-serif;
+$radius: 5px;
+$max-width: 1440px;
+$main-transition: all 0.1s linear;
+// _________________________________________________
+// ----------++++++++ Mixines +++++++++++---------
+// _________________________________________________
+
+// ___________________________________________________________
+@mixin box-shadow {
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.43);
+  -webkit-box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.43);
+  -moz-box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.43);
+}
+@mixin box-shadow-right {
+  box-shadow: 11px 11px 9px -15px rgba(0, 0, 0, 0.57);
+  -webkit-box-shadow: 11px 11px 7px -12px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 11px 11px 6px -10px rgba(0, 0, 0, 0);
+}
+// ___________________________________________________________
+
+// _________________________________________________
+// ----------++++++++ Utilities +++++++++++---------
+// _________________________________________________
+
+// ___________________________________________________________
+.hidden {
+  display: none;
+}
+// ___________________________________________________________

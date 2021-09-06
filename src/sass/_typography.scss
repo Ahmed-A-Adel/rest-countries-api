@@ -1,0 +1,23 @@
+body {
+  font-size: $main-font-size;
+  color: $Very-Dark-Blue;
+  font-family: $font-family;
+  font-weight: 300;
+  background: $Very-Light-Gray;
+  text-transform: capitalize;
+}
+h1,
+h2,
+h3 {
+  color: $Very-Dark-Blue;
+  font-weight: 600;
+}
+h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.mode-switcher__heading {
+  font-size: 0.9rem;
+  color: $Very-Dark-Blue;
+  font-weight: 600;
+}

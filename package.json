@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "live-server",
-    "sass:complier": "sass -w src/sass/main.scss style.css"
+    "sass:compiler": "sass -w src/sass/main.scss style.css"
   },
   "author": "'Ahmed",
   "license": "ISC",
