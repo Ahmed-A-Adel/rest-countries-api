@@ -1,23 +1,166 @@
 body {
   font-size: $main-font-size;
-  color: $Very-Dark-Blue;
   font-family: $font-family;
   font-weight: 300;
-  background: $Very-Light-Gray;
+  background: $Very-Dark-Blue;
+  color: $White;
   text-transform: capitalize;
 }
 h1,
 h2,
 h3 {
-  color: $Very-Dark-Blue;
   font-weight: 600;
+  color: inherit;
 }
 h1 {
   font-size: 1.4rem;
   font-weight: 800;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.header {
+  @include box-shadow-right;
+}
+.header--center {
+  background: inherit;
+}
+.section {
+  font-size: 1.1rem;
+}
+
 .mode-switcher__heading {
-  font-size: 0.9rem;
-  color: $Very-Dark-Blue;
+  font-size: 0.8rem;
   font-weight: 600;
+}
+
+.section__search {
+  &__text-input {
+    // background: $Dark-Blue;
+    font-size: inherit;
+    text-transform: capitalize;
+    color: inherit;
+
+    @include box-shadow();
+
+    &:hover {
+      @include box-shadow-right();
+    }
+  }
+
+  &__label {
+    text-transform: capitalize;
+    transition: $main-transition;
+  }
+  &__icon {
+    font-size: 1.2rem;
+    color: $Dark-Gray;
+    color: inherit;
+  }
+}
+
+.section__filter {
+  background: transparent;
+
+  .select-container {
+    font-size: 1rem;
+    text-transform: capitalize;
+    transition: $main-transition;
+
+    &__option {
+      &:hover {
+        background: $Very-Light-Gray;
+      }
+    }
+    &__btn {
+      // background: $Dark-Blue;
+      text-transform: capitalize;
+      font-size: 1rem;
+      text-align: left;
+      color: inherit;
+
+      @include box-shadow();
+      &:hover {
+        @include box-shadow-right();
+      }
+    }
+    &__btn::after {
+      // background-color: $White;
+    }
+  }
+}
+
+.country {
+  // background: $Dark-Blue;
+
+  @include box-shadow-right();
+
+  &:hover {
+    @include box-shadow;
+  }
+
+  &__info {
+    text-transform: capitalize;
+    &__heading {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    &__subHeading {
+      &__paragraph {
+        color: $Very-Dark-Blue;
+        color: inherit;
+        font-weight: 300;
+      }
+    }
+  }
+}
+.back-btn-container {
+  background: red;
+}
+.back-btn {
+  // background: $Dark-Blue;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+
+  @include box-shadow;
+
+  &:hover {
+    @include box-shadow-right();
+  }
+}
+
+.country-details {
+  background: inherit;
+  color: inherit;
+
+  &__heading {
+    font-size: 2.2rem;
+  }
+  &__info {
+    &__subHeading {
+      &__paragraph {
+        color: inherit;
+        font-weight: 200;
+      }
+    }
+  }
+  &__border {
+    &__heading {
+      font-size: 1.2rem;
+    }
+
+    &__country {
+      font-size: 1rem;
+
+      // background: $Dark-Blue;
+
+      @include box-shadow;
+      &:hover {
+        @include box-shadow-right();
+      }
+    }
+  }
 }

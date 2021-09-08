@@ -19,51 +19,106 @@
     <!-- style -->
     <link rel="stylesheet" href="./style.css" />
     <!-- script -->
-    <script defer module src="./src/script/controller.js"></script>
+    <script type='module' defer src="./src/script/controller.js"></script>
   </head>
   <body>
     <!-- header -->
-    <header class="header">
+    <header class="header dark-mode-bg">
       <section class="header--center">
         <h1 class="header--center__heading">where in the world?</h2>
         <div class="mode-switcher">
-          <span class="mode-switcher__icon"><i class="fas fa-moon"></i></span>
+          <span class="mode-switcher__icon"><i class="fas fa-moon "></i></span>
           <p class="mode-switcher__heading">dark mode</p>
         </div>
       </section>
       </header>
       <!-- header -->
-      
-    <section class="section">
-      <div class="section__search">
-        <label for="search" class="section__search__label"
-          >search for a country...</label
-        >
-        <input
+      <!-- Search and filter section -->
+      <section class="section">
+        <div class="section__search">
+          <input
           type="search"
           name="search"
+          placeholder="search for a country..."
           id="search"
-          class="section__search__text-input"
-        />
-        <span class="section__search__icon"><i class="fas fa-search"></i></span>
-      </div>
-      <div class="section__filter">
-        <button class="select-container__btn" id="btn-select">
-          filter by region
-        </button>
-        <div id="select" class="select-container hidden">
-          <p class="select-container__option" id="option">asia</p>
-          <p class="select-container__option" id="option">africa</p>
-          <p class="select-container__option" id="option">america</p>
-          <p class="select-container__option" id="option">euorep</p>
-          <p class="select-container__option" id="option">oceania</p>
+          class="section__search__text-input dark-mode-bg"
+          />
+          <label for="search" class="section__search__label"
+          >search for a country...</label
+          >
+          <span class="section__search__icon"><i class="fas fa-search"></i></span>
         </div>
-      </div>
-    </section>
-    <main class="main">
-
+        <div class="section__filter">
+          <button class="select-container__btn dark-mode-bg" id="btn-select">
+            filter by region
+          </button>
+          <div id="select" class="select-container hidden">
+            <p class="select-container__option" id="option">asia</p>
+            <p class="select-container__option" id="option">africa</p>
+            <p class="select-container__option" id="option">america</p>
+            <p class="select-container__option" id="option">euorep</p>
+            <p class="select-container__option" id="option">oceania</p>
+          </div>
+        </div>
+      </section>
+      <!-- Search and filter section -->
+      <!-- main countainer for the columns -->
+      <main class="main">
+        
+        <!-- single country -->
+        <article class="country dark-mode-bg">
+          <div class="country__image-container">
+            <img
+            class="country__image-container__img"
+            src="./src/images/egypt-flag.png"
+            alt="the egyption flag"
+            />
+          </div>
+          <div class="country__info">
+          <h2 class="country__info__heading">egypt</h2>
+          <h3 class="country__info__subHeading">
+            population:
+            <p class="country__info__subHeading__paragraph">120,000,000</p>
+          </h3>
+          <h3 class="country__info__subHeading">
+            region:
+            <p class="country__info__subHeading__paragraph">africa</p>
+          </h3>
+          <h3 class="country__info__subHeading">
+            language:
+            <p class="country__info__subHeading__paragraph">arabic</p>
+          </h3>
+        </div>
+      </article>
+      <!-- end of  single country -->
       <!-- single country -->
-      <article class="country">
+      <article class="country dark-mode-bg">
+        <div class="country__image-container">
+          <img
+          class="country__image-container__img"
+          src="./src/images/egypt-flag.png"
+          alt="the egyption flag"
+          />
+        </div>
+        <div class="country__info">
+          <h2 class="country__info__heading">egypt</h2>
+          <h3 class="country__info__subHeading">
+            population:
+            <p class="country__info__subHeading__paragraph">120,000,000</p>
+          </h3>
+          <h3 class="country__info__subHeading">
+            region:
+            <p class="country__info__subHeading__paragraph">africa</p>
+          </h3>
+          <h3 class="country__info__subHeading">
+            language:
+            <p class="country__info__subHeading__paragraph">arabic</p>
+          </h3>
+        </div>
+      </article>
+      <!-- end of  single country -->
+      <!-- single country -->
+      <article class="country dark-mode-bg">
         <div class="country__image-container">
           <img
             class="country__image-container__img"
@@ -89,13 +144,13 @@
       </article>
       <!-- end of  single country -->
       <!-- single country -->
-      <article class="country">
+      <article class="country dark-mode-bg">
         <div class="country__image-container">
           <img
-            class="country__image-container__img"
+          class="country__image-container__img"
             src="./src/images/egypt-flag.png"
             alt="the egyption flag"
-          />
+            />
         </div>
         <div class="country__info">
           <h2 class="country__info__heading">egypt</h2>
@@ -115,83 +170,32 @@
       </article>
       <!-- end of  single country -->
       <!-- single country -->
-      <article class="country">
+      <article class="country dark-mode-bg">
         <div class="country__image-container">
           <img
-            class="country__image-container__img"
-            src="./src/images/egypt-flag.png"
+          class="country__image-container__img"
+          src="./src/images/egypt-flag.png"
             alt="the egyption flag"
-          />
-        </div>
-        <div class="country__info">
-          <h2 class="country__info__heading">egypt</h2>
-          <h3 class="country__info__subHeading">
-            population:
-            <p class="country__info__subHeading__paragraph">120,000,000</p>
-          </h3>
-          <h3 class="country__info__subHeading">
-            region:
-            <p class="country__info__subHeading__paragraph">africa</p>
-          </h3>
-          <h3 class="country__info__subHeading">
-            language:
-            <p class="country__info__subHeading__paragraph">arabic</p>
-          </h3>
-        </div>
-      </article>
-      <!-- end of  single country -->
-      <!-- single country -->
-      <article class="country">
-        <div class="country__image-container">
-          <img
-            class="country__image-container__img"
-            src="./src/images/egypt-flag.png"
-            alt="the egyption flag"
-          />
-        </div>
-        <div class="country__info">
-          <h2 class="country__info__heading">egypt</h2>
-          <h3 class="country__info__subHeading">
-            population:
-            <p class="country__info__subHeading__paragraph">120,000,000</p>
-          </h3>
-          <h3 class="country__info__subHeading">
-            region:
-            <p class="country__info__subHeading__paragraph">africa</p>
-          </h3>
-          <h3 class="country__info__subHeading">
-            language:
-            <p class="country__info__subHeading__paragraph">arabic</p>
-          </h3>
-        </div>
-      </article>
-      <!-- end of  single country -->
-      <!-- single country -->
-      <article class="country">
-        <div class="country__image-container">
-          <img
-            class="country__image-container__img"
-            src="./src/images/egypt-flag.png"
-            alt="the egyption flag"
-          />
-        </div>
-        <div class="country__info">
-          <h2 class="country__info__heading">egypt</h2>
-          <h3 class="country__info__subHeading">
-            population:
-            <p class="country__info__subHeading__paragraph">120,000,000</p>
-          </h3>
-          <h3 class="country__info__subHeading">
-            region:
-            <p class="country__info__subHeading__paragraph">africa</p>
-          </h3>
-          <h3 class="country__info__subHeading">
-            language:
-            <p class="country__info__subHeading__paragraph">arabic</p>
-          </h3>
-        </div>
-      </article>
-      <!-- end of  single country -->
-    </main>
-  </body>
+            />
+          </div>
+          <div class="country__info">
+            <h2 class="country__info__heading">egypt</h2>
+            <h3 class="country__info__subHeading">
+              population:
+              <p class="country__info__subHeading__paragraph">120,000,000</p>
+            </h3>
+            <h3 class="country__info__subHeading">
+              region:
+              <p class="country__info__subHeading__paragraph">africa</p>
+            </h3>
+            <h3 class="country__info__subHeading">
+              language:
+              <p class="country__info__subHeading__paragraph">arabic</p>
+            </h3>
+          </div>
+        </article>
+        <!-- end of  single country -->
+      </main>
+      <!-- main countainer for the columns -->
+    </body>
 </html>

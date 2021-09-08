@@ -27,7 +27,7 @@
 // _________________________________________________
 // Colors
 $Dark-Blue: hsl(209, 23%, 22%);
-$Very-Dark-Blue-d: hsl(207, 26%, 17%);
+$Very-Dark-Blue: hsl(207, 26%, 17%);
 $Very-Dark-Blue: hsl(200, 15%, 8%);
 $Dark-Gray: hsl(0, 0%, 52%);
 $Very-Light-Gray: hsl(0, 0%, 98%);
@@ -37,7 +37,7 @@ $sub-font-size: 16px;
 $font-family: "Nunito Sans", sans-serif;
 $radius: 5px;
 $max-width: 1440px;
-$main-transition: all 0.1s linear;
+$main-transition: all 0.2s ease;
 // _________________________________________________
 // ----------++++++++ Mixines +++++++++++---------
 // _________________________________________________
@@ -47,11 +47,13 @@ $main-transition: all 0.1s linear;
   box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.43);
   -webkit-box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.43);
   -moz-box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.43);
+  transition: $main-transition;
 }
 @mixin box-shadow-right {
   box-shadow: 11px 11px 9px -15px rgba(0, 0, 0, 0.57);
   -webkit-box-shadow: 11px 11px 7px -12px rgba(0, 0, 0, 0.57);
   -moz-box-shadow: 11px 11px 6px -10px rgba(0, 0, 0, 0);
+  transition: $main-transition;
 }
 // ___________________________________________________________
 
@@ -63,4 +65,18 @@ $main-transition: all 0.1s linear;
 .hidden {
   display: none;
 }
+
+.light-mode-bg {
+  background: $White;
+}
+.dark-mode-bg {
+  background: $Dark-Blue;
+}
+.dark-mode-body {
+  color: $Very-Dark-Blue;
+  background: $Very-Light-Gray;
+}
 // ___________________________________________________________
+// :not(img) {
+//   background: white;
+// }

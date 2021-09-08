@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rest-api-countries</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+    <!-- style -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- script -->
+    <script defer type='module' src="./src/script/controller.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header dark-mode-bg">
+      <section class="header--center">
+        <h1 class="header--center__heading">where in the world?</h2>
+        <div class="mode-switcher">
+          <span class="mode-switcher__icon"><i class="fas fa-moon"></i></span>
+          <p class="mode-switcher__heading">dark mode</p>
+        </div>
+      </section>
+    </header>
+    <!-- end of header -->
+
+    <!-- back button -->
+    <div class="back-btn__container " id="back-btn">
+      <a href="index.html" class="back-btn dark-mode-bg"><span class="back-icon">←</span> back</a>
+    </div>
+    <!-- back button -->
+
+    <!-- Country -->
+    <main class="main-country">
+      <!-- single column -->
+      <article class="country-image ">
+      
+          <img
+          class="country-image__img"
+          src="./src/images/egypt-flag.png"
+          alt="the egyption flag"
+          />
+      </article>
+      <!-- single column --
+      <!-- single column -->
+      <article class="country-details ">
+        <h2 class="country-details__heading">egypt</h2>
+        <div class="country-details__info">
+          <h3 class="country-details__info__subHeading">
+                population:
+            <p class="country-details__info__subHeading__paragraph">120,000,000</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            region:
+            <p class="country-details__info__subHeading__paragraph">africa</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            language:
+            <p class="country-details__info__subHeading__paragraph">arabic</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            population:
+            <p class="country-details__info__subHeading__paragraph">120,000,000</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            region:
+            <p class="country-details__info__subHeading__paragraph">africa</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            language:
+            <p class="country-details__info__subHeading__paragraph">arabic</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            population:
+            <p class="country-details__info__subHeading__paragraph">120,000,000</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            region:
+            <p class="country-details__info__subHeading__paragraph">africa</p>
+          </h3>
+          <h3 class="country-details__info__subHeading">
+            language:
+            <p class="country-details__info__subHeading__paragraph">arabic</p>
+          </h3>
+        </div>
+        <!-- border countries -->
+        <div class="country-details__border">
+          <h3 class="country-details__border__heading">
+            border countries:
+          </h3>
+          <div class="block">
+            <a href="#" class="country-details__border__country dark-mode-bg" id="border-country">libya</a href="">
+            <a href="#" class="country-details__border__country dark-mode-bg" id="border-country">jordan</a>
+            <a href="#" class="country-details__border__country dark-mode-bg" id="border-country">palastain</a>
+          </div>
+        </div>
+        <!-- border countries -->
+      </article>
+      <!-- single column -->
+    </main>
+        
+  </body>
+</html>

@@ -8,14 +8,11 @@
 }
 .header {
   width: 100%;
-  background: white;
   display: grid;
   justify-items: center;
   place-items: center;
-  @include box-shadow-right;
 }
 .header--center {
-  background: $White;
   width: 90vw;
   height: 6rem;
   display: flex;
@@ -29,7 +26,7 @@
 .section {
   width: 100%;
   max-width: $max-width;
-  height: 50vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -122,7 +119,7 @@ img {
   .section {
     width: 90vw;
     max-width: 1440px;
-    height: 20vh;
+    height: 25vh;
     display: grid;
     justify-items: space-between;
     align-items: center;
@@ -134,7 +131,7 @@ img {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 350px) {
   .header--center {
     width: 95vw;
   }
