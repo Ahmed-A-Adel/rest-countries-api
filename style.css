@@ -300,16 +300,20 @@ a {
   color: inherit;
 }
 
-.section__filter {
-  background: transparent;
-}
 .section__filter .select-container {
   font-size: 1rem;
   text-transform: capitalize;
   transition: all 0.2s ease;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.section__filter .select-container__option {
+  transition: all 0.2s ease;
+  border-right: 2px dashed transparent;
 }
 .section__filter .select-container__option:hover {
-  background: #fafafa;
+  border-right: 2px dashed #000000;
+  background-color: #16a085;
 }
 .section__filter .select-container__btn {
   text-transform: capitalize;
@@ -327,6 +331,7 @@ a {
   -moz-box-shadow: 11px 11px 6px -10px rgba(0, 0, 0, 0);
   transition: all 0.2s ease;
 }
+
 .country {
   box-shadow: 11px 11px 9px -15px rgba(0, 0, 0, 0.57);
   -webkit-box-shadow: 11px 11px 7px -12px rgba(0, 0, 0, 0.57);

@@ -61,16 +61,20 @@ a {
 }
 
 .section__filter {
-  background: transparent;
-
   .select-container {
     font-size: 1rem;
     text-transform: capitalize;
     transition: $main-transition;
+    border-radius: $radius;
+    overflow: hidden;
 
     &__option {
+      transition: $main-transition;
+      border-right: 2px dashed transparent;
+
       &:hover {
-        background: $Very-Light-Gray;
+        border-right: 2px dashed #000000;
+        background-color: #16a085;
       }
     }
     &__btn {
@@ -84,9 +88,6 @@ a {
       &:hover {
         @include box-shadow-right();
       }
-    }
-    &__btn::after {
-      // background-color: $White;
     }
   }
 }

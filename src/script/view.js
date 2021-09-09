@@ -1,7 +1,7 @@
 class View {
   //   mode = document.querySelector(".mode-switcher");
 
-  toggle(element, elements) {
+  toggleDarkMode(element, elements) {
     element.addEventListener("click", function (e) {
       // select mode icon and toggle it
       e.currentTarget.classList.toggle("dark-mode");
@@ -24,6 +24,12 @@ class View {
       });
       // select the body and 9toggle it with the .dark-mode-body class
       document.body.classList.toggle("dark-mode-body");
+    });
+  }
+  toggleSelect(element, className) {
+    element.addEventListener("click", function (e) {
+      const el = e.currentTarget.nextElementSibling;
+      el.classList.toggle(className);
     });
   }
 }
