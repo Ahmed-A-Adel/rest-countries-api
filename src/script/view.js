@@ -24,14 +24,6 @@ class View {
       });
       // select the body and 9toggle it with the .dark-mode-body class
       document.body.classList.toggle("dark-mode-body");
-      console.log(document.body);
-    });
-  }
-  toggleCountry(element, elements, className) {
-    element.addEventListener("click", function (e) {
-      elements.forEach((el) => {
-        el.classList.toggle("dark-mode-bg");
-      });
     });
   }
 }
