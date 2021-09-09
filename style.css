@@ -34,8 +34,8 @@
 }
 
 .dark-mode-body {
-  color: #111517;
-  background: #fafafa;
+  background: #111517;
+  color: white;
 }
 
 .mode-switcher {
@@ -233,8 +233,8 @@ body {
   font-size: 14px;
   font-family: "Nunito Sans", sans-serif;
   font-weight: 300;
-  background: #111517;
-  color: white;
+  color: #111517;
+  background: #fafafa;
   text-transform: capitalize;
 }
 
