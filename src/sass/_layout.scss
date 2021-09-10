@@ -39,7 +39,11 @@
   margin: 2rem auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17.8rem, 1fr));
+  // grid-template-rows: repeat(auto-fill, auto);
   gap: 2rem;
+}
+.country {
+  height: 100%;
 }
 .main-country {
   max-width: $max-width;

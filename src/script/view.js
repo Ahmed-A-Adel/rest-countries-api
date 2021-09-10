@@ -1,5 +1,5 @@
 class View {
-  //   mode = document.querySelector(".mode-switcher");
+  main = document.querySelector(".main");
 
   toggleDarkMode(element, elements) {
     element.addEventListener("click", function (e) {
@@ -31,6 +31,75 @@ class View {
       const el = e.currentTarget.nextElementSibling;
       el.classList.toggle(className);
     });
+  }
+  renderCountries(countries) {
+    this.main.textContent = "";
+
+    countries.forEach((country) => {
+      const markup = `<a href="#">
+          <article class="country light-mode-bg">
+            <div class="country__image-container">
+              <img
+              class="country__image-container__img"
+              src="${country.flag}"
+              alt="the ${country.name} flag"
+              />
+            </div>
+            <div class="country__info">
+            <h2 class="country__info__heading">${country.name}</h2>
+            <h3 class="country__info__subHeading">
+              population:
+              <p class="country__info__subHeading__paragraph">${country.population}</p>
+            </h3>
+            <h3 class="country__info__subHeading">
+              region:
+              <p class="country__info__subHeading__paragraph">${country.region}</p>
+            </h3>
+            <h3 class="country__info__subHeading">
+              language:
+              <p class="country__info__subHeading__paragraph">${country.languages[0].name}</p>
+            </h3>
+          </div>
+        </article>
+        </a>
+  `;
+      this.main.insertAdjacentHTML("beforeend", markup);
+    });
+  }
+  renderCountry(country, element) {
+    this.main.textContent = "";
+    element.addEventListener("input", function (e) {
+      const value = e.currentElement.value;
+    });
+
+    const markup = `<a href="#">
+          <article class="country light-mode-bg">
+            <div class="country__image-container">
+              <img
+              class="country__image-container__img"
+              src="${country.flag}"
+              alt="the ${country.name} flag"
+              />
+            </div>
+            <div class="country__info">
+            <h2 class="country__info__heading">${country.name}</h2>
+            <h3 class="country__info__subHeading">
+              population:
+              <p class="country__info__subHeading__paragraph">${country.population}</p>
+            </h3>
+            <h3 class="country__info__subHeading">
+              region:
+              <p class="country__info__subHeading__paragraph">${country.region}</p>
+            </h3>
+            <h3 class="country__info__subHeading">
+              language:
+              <p class="country__info__subHeading__paragraph">${country.languages[0].name}</p>
+            </h3>
+          </div>
+        </article>
+        </a>
+  `;
+    this.main.insertAdjacentHTML("beforeend", markup);
   }
 }
 export default new View();
