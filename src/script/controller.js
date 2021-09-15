@@ -13,9 +13,39 @@ const header = document.querySelector(".header");
 const backBtn = document.querySelector(".back-btn");
 const mainCountry = document.querySelector(".main-country");
 const main = document.querySelector(".main");
-
+const section = document.querySelector(".section");
 // _______________________________________________________
 // ----------+++++++++ Functions +++++++++++++------------
+// _______________________________________________________
+
+// _______________________________________________________
+const countryController = function () {
+  const countries = document.querySelectorAll(".country");
+  countries.forEach((country) => {
+    country.addEventListener("click", async function (e) {
+      e.preventDefault();
+      main.remove();
+      section.remove();
+      await model.getCountryByName(country.dataset.name);
+      const countryModel = await model.app.countryByName;
+      await view.renderCountry(countryModel[0]);
+      const block = document.querySelector(".block");
+      block.textContent = "";
+      countryModel[0].borders.forEach(async (border, i) => {
+        if (i > 2) return;
+        await model.getCountryByCode(border);
+        let realName = await model.app.countryByCode[i];
+
+        block.insertAdjacentHTML(
+          "afterbegin",
+          `  <a href="#" class="country-details__border__country light-mode-bg" id="border-country" data-name='${
+            realName.name.split(" ")[0]
+          }' >${realName.name.split(" ")[0]}</a>`
+        );
+      });
+    });
+  });
+};
 // _______________________________________________________
 
 // _______________________________________________________
@@ -28,6 +58,7 @@ const toggleCountry = function () {
   });
 };
 // _______________________________________________________
+
 // _______________________________________________________
 const getCountry = function (first = true) {
   if (first) {
@@ -40,6 +71,7 @@ const getCountry = function (first = true) {
   }
 };
 // _______________________________________________________
+
 // _______________________________________________________
 const searchController = async function () {
   search.addEventListener("input", async function (e) {
@@ -49,6 +81,7 @@ const searchController = async function () {
     const countries = await model.app.countryByName;
     await view.renderCountries(countries);
     toggleCountry();
+    console.log(countries);
   });
 };
 // _______________________________________________________
@@ -75,9 +108,11 @@ const init = async function () {
     selectController();
     searchController();
     getCountry();
+    countryController();
   }
   if (!search) {
     getCountry(false);
+    countryController();
   }
 };
 init();

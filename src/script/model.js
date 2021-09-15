@@ -3,6 +3,7 @@ export const app = {
   countryByRegion: [],
   countryByName: [],
   countryByCode: [],
+  borders: [],
 };
 
 export const getJson = async function (url) {
@@ -41,6 +42,8 @@ export const getCountryByName = async function (countryName) {
 // get country by code
 // _________________________________________________________________________________
 export const getCountryByCode = async function (code) {
-  app.countryByCode = getJson(`https://restcountries.eu/rest/v2/alpha/${code}`);
+  app.countryByCode.push(
+    getJson(`https://restcountries.eu/rest/v2/alpha/${code}`)
+  );
 };
 // _________________________________________________________________________________
