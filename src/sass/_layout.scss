@@ -45,6 +45,9 @@
 .country {
   height: 100%;
 }
+.country-details__border {
+  margin-top: 2rem;
+}
 .main-country {
   max-width: $max-width;
   width: 90vw;
@@ -99,7 +102,7 @@ img {
 
   .country-image__img {
     width: 100%;
-    height: 100%;
+    height: 23rem;
     object-fit: cover;
   }
   .section__filter {

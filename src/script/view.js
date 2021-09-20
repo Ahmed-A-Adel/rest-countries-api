@@ -76,8 +76,6 @@ class View {
     this.countryNames = countryNames;
   }
   renderCountry(country) {
-    // this.mainCountry.textContent = "";
-    console.log(country, "view🍳");
     const population = new Intl.NumberFormat("de-DE").format(
       Number(country.population)
     );
