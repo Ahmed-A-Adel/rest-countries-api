@@ -21,6 +21,27 @@ const section = document.querySelector(".section");
 // _______________________________________________________
 
 // _______________________________________________________
+
+const renderThreeBorderCountries = async function (country) {
+  // clear the border countries block
+  const block = document.querySelector(".block");
+  block.textContent = "";
+  // render only three countries
+  country.borders.forEach(async (border, i) => {
+    if (i > 2) return;
+    await model.getCountryByCode(border);
+    let realName = await model.app.countryByCode[i];
+    block.insertAdjacentHTML(
+      "afterbegin",
+      `  <a href="#" class="country-details__border__country light-mode-bg" id="border-country" data-name='${
+        realName.name.split(" ")[0]
+      }' >${realName.name.split(" ")[0]}</a>`
+    );
+  });
+};
+// _______________________________________________________
+
+// _______________________________________________________
 const showCountry = function (country, visibel = "none") {
   country.addEventListener("click", async function (e) {
     e.preventDefault();
@@ -31,28 +52,20 @@ const showCountry = function (country, visibel = "none") {
     await model.getCountryByName(e.currentTarget.dataset.name);
     const countryModel = await model.app.countryByName;
     const country = countryModel[0];
-    // render the country
+    // remove main country and back button
     if (document.querySelector(".main-country")) {
       document.querySelector(".main-country").remove();
       document.querySelector("#back-btn").remove();
-      console.log("remove country and btn");
     }
+    // render the country
     await view.renderCountry(country);
-    // clear the border countries block
-    const block = document.querySelector(".block");
-    block.textContent = "";
+
     //render only three border countries
-    country.borders.forEach(async (border, i) => {
-      if (i > 2) return;
-      await model.getCountryByCode(border);
-      let realName = await model.app.countryByCode[i];
-      block.insertAdjacentHTML(
-        "afterbegin",
-        `  <a href="#" class="country-details__border__country light-mode-bg" id="border-country" data-name='${
-          realName.name.split(" ")[0]
-        }' >${realName.name.split(" ")[0]}</a>`
-      );
-    });
+    // renderThreeBorderCountries(country);
+
+    // toggle darkmode
+    const elements = view.elements();
+    view.toggleCountriesDarkmode(elements, header);
   });
 };
 // _______________________________________________________
@@ -72,26 +85,20 @@ const countryController = function () {
 // _______________________________________________________
 
 // _______________________________________________________
-const toggleCountry = function () {
-  const countries = document.querySelectorAll(".country");
-  countries.forEach((country) => {
-    header.classList.contains("dark-mode-bg")
-      ? country.classList.add("dark-mode-bg")
-      : country.classList.remove("dark-mode-bg");
-  });
-};
+// const toggleCountriesDarkmode = function (countries) {
+//   countries.forEach((country) => {
+//     header.classList.contains("dark-mode-bg")
+//       ? country.classList.add("dark-mode-bg")
+//       : country.classList.remove("dark-mode-bg");
+//   });
+// };
 // _______________________________________________________
 
 // _______________________________________________________
-const getCountry = function (first = true) {
-  if (first) {
-    const modeSwitcherMainElements = [header, search, selectBtn, select];
-    view.toggleDarkMode(modeSwitcher, modeSwitcherMainElements);
-    view.toggleSelect(selectBtn, "hidden");
-  } else {
-    const modeSwitcherSubElements = [header, backBtn, ...borderCountry];
-    view.toggleDarkMode(modeSwitcher, modeSwitcherSubElements);
-  }
+const getCountry = function () {
+  const darkmodeElements = [header, search, selectBtn, select];
+  view.toggleDarkMode(modeSwitcher, darkmodeElements);
+  view.toggleSelect(selectBtn, "hidden");
 };
 // _______________________________________________________
 
@@ -101,9 +108,11 @@ const searchController = async function () {
     const value = e.currentTarget.value;
     if (!value || value > 1) return;
     await model.getCountryByName(value);
-    const countries = await model.app.countryByName;
-    await view.renderCountries(countries);
-    toggleCountry();
+    const modelCountries = await model.app.countryByName;
+    await view.renderCountries(modelCountries);
+    const countries = document.querySelectorAll(".country");
+
+    view.toggleCountriesDarkmode(countries, header);
     countryController();
   });
 };
@@ -115,9 +124,11 @@ const selectController = async function () {
     const value = e.target.textContent;
     if (!value || value > 1) return;
     await model.getCountriesByRegion(value);
-    const countries = await model.app.countryByRegion;
-    await view.renderCountries(countries);
-    toggleCountry();
+    const modelCountries = await model.app.countryByRegion;
+    await view.renderCountries(modelCountries);
+    const countries = document.querySelectorAll(".country");
+
+    view.toggleCountriesDarkmode(countries, header);
     countryController();
   });
 };
@@ -135,10 +146,8 @@ const observeCountry = function () {
   // Callback function to execute when mutations are observed
   const callback = function (mutationsList, observer) {
     if (!document.querySelector(".main-country")) return;
-    const main = document.querySelector(".main-country");
-    const backBtn = document.querySelector(".back-btn");
-    const borderCountry = document.querySelectorAll("#border-country");
-    hideCountriesAndShowCountry(borderCountry);
+    const borderCountries = document.querySelectorAll("#border-country");
+    hideCountriesAndShowCountry(borderCountries);
   };
 
   // Create an observer instance linked to the callback function
@@ -154,19 +163,25 @@ const observeCountry = function () {
 
 // _______________________________________________________
 const init = async function () {
-  if (!backBtn) {
-    await model.getCountries();
-    const countries = await model.app.countries;
-    await view.renderCountries(countries);
-    selectController();
-    searchController();
-    getCountry();
-  }
-  if (!search) {
-    getCountry(false);
-  }
+  await model.getCountries();
+  const countries = await model.app.countries;
+  await view.renderCountries(countries);
+  selectController();
+  searchController();
+  getCountry();
   countryController();
   observeCountry();
 };
 init();
 // _______________________________________________________
+// const countriesName = async function (countries, string) {
+//   const names = [];
+//   countries.forEach((country) => {
+//     const code = country.alpha3Code;
+//     const name = country.name;
+//     names.push([code, name]);
+//   });
+
+//   console.log(names.find((a) => a[0] === string)[1]);
+// };
+// countriesName(await model.app.countries, "AFG");

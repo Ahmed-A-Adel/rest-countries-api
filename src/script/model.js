@@ -4,6 +4,8 @@ export const app = {
   countryByName: [],
   countryByCode: [],
   borders: [],
+  codes: [],
+  names: [],
 };
 
 export const getJson = async function (url) {

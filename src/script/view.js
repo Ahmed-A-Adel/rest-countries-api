@@ -1,42 +1,89 @@
 class View {
   main = document.querySelector(".main");
   mainCountry = document.querySelector(".main-country");
+  header = document.querySelector(".header");
+  countries;
   countryNames;
-  toggleDarkMode(element, elements) {
-    element.addEventListener("click", function (e) {
-      // select mode icon and toggle it
-      e.currentTarget.classList.toggle("dark-mode");
-      const countries = document.querySelectorAll(".country");
-      const icon = e.currentTarget.querySelector(".fas");
-      // switch between sun icon and moon icon
-      icon.classList.toggle("fa-sun");
-      // toggle the dark and the light mode text content
-      icon.parentElement.nextElementSibling.textContent === "dark mode"
-        ? (icon.parentElement.nextElementSibling.textContent = "light mode")
-        : (icon.parentElement.nextElementSibling.textContent = "dark mode");
-      // select element background and toggle it with the dark mode class
-      elements.forEach((el) => {
-        el.classList.toggle("dark-mode-bg");
-      });
-      // toggle darkmode class depandes on the header element
-      countries.forEach((el) => {
-        elements[0].classList.contains("dark-mode-bg")
-          ? el.classList.add("dark-mode-bg")
-          : el.classList.remove("dark-mode-bg");
-      });
-      // select the body and toggle it with the .dark-mode-body class
-      document.body.classList.toggle("dark-mode-body");
-      // ________________________________________________________________
-    });
+  name;
+
+  elements() {
+    const search = document.querySelector("#search");
+    const selectBtn = document.querySelector("#btn-select");
+    const select = document.querySelector("#select");
+    const borderCounties = document.querySelectorAll("#border-country");
+    const backBtn = document.querySelector(".back-btn");
+    const elements = backBtn
+      ? [backBtn, ...borderCounties]
+      : [select, selectBtn, search];
+    return elements;
   }
 
+  toggleDarkMode(element, elements) {
+    const modeSwitcher = document.querySelector(".mode-switcher");
+    modeSwitcher.addEventListener("click", this.darkmodeHelper.bind(this));
+  }
+
+  darkmodeHelper(e) {
+    // select mode icon and toggle it
+    e.currentTarget.classList.toggle("dark-mode");
+    const countries = document.querySelectorAll(".country");
+    const icon = e.currentTarget.querySelector(".fas");
+    const elements = this.elements();
+
+    // switch between sun icon and moon icon
+    icon.classList.toggle("fa-sun");
+    // toggle the dark and the light mode text content
+    icon.parentElement.nextElementSibling.textContent === "dark mode"
+      ? (icon.parentElement.nextElementSibling.textContent = "light mode")
+      : (icon.parentElement.nextElementSibling.textContent = "dark mode");
+    // select element background and toggle it with the dark mode class
+    this.header.classList.toggle("dark-mode-bg");
+    // toggle darkmode class depandes on the header element
+    this.toggleCountriesDarkmode(countries, this.header);
+    this.toggleCountriesDarkmode(elements, this.header);
+
+    // select the body and toggle it with the .dark-mode-body class
+    document.body.classList.toggle("dark-mode-body");
+    // ________________________________________________________________
+  }
   toggleSelect(element, className) {
     element.addEventListener("click", function (e) {
       const el = e.currentTarget.nextElementSibling;
       el.classList.toggle(className);
     });
   }
+
+  countriesName(countries, string) {
+    try {
+      const names = [];
+      countries.forEach((country) => {
+        const code = country.alpha3Code;
+        const name = country.name;
+        names.push([code, name]);
+      });
+
+      return names.find((a) => a[0] === string)[1];
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  renderThreeBorderCountries(borders) {
+    const borderCountries = [];
+    // render only three countries
+    borders.forEach((border, i) => {
+      if (i > 2) return;
+      let realName = this.countriesName(this.countries, border);
+
+      borderCountries.push(
+        `<a href="#" class="country-details__border__country light-mode-bg" id="border-country" data-name='${
+          realName.split(" ")[0]
+        }'>${realName.split(" ")[0]}</a>`
+      );
+    });
+    return borderCountries;
+  }
   renderCountries(countries) {
+    this.countries = countries;
     this.main.textContent = "";
     const countryNames = [];
     countries.forEach((country) => {
@@ -76,6 +123,7 @@ class View {
     this.countryNames = countryNames;
   }
   renderCountry(country) {
+    const borders = this.renderThreeBorderCountries(country.borders);
     const population = new Intl.NumberFormat("de-DE").format(
       Number(country.population)
     );
@@ -103,7 +151,9 @@ class View {
         <div class="country-details__info">
           <h3 class="country-details__info__subHeading">
                 native name:
-            <p class="country-details__info__subHeading__paragraph">${country.nativeName}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.nativeName
+            }</p>
           </h3>
           <h3 class="country-details__info__subHeading">
             population:
@@ -111,27 +161,39 @@ class View {
           </h3>
           <h3 class="country-details__info__subHeading">
             region:
-            <p class="country-details__info__subHeading__paragraph">${country.region}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.region
+            }</p>
           </h3>
           <h3 class="country-details__info__subHeading">
             sub region:
-            <p class="country-details__info__subHeading__paragraph">${country.subregion}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.subregion
+            }</p>
           </h3>
           <h3 class="country-details__info__subHeading">
             capital:
-            <p class="country-details__info__subHeading__paragraph">${country.capital}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.capital
+            }</p>
           </h3>
           <h3 class="country-details__info__subHeading">
             top level domain:
-            <p class="country-details__info__subHeading__paragraph">${country.topLevelDomain}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.topLevelDomain
+            }</p>
           </h3>
           <h3 class="country-details__info__subHeading">
             currencies:
-            <p class="country-details__info__subHeading__paragraph">${country.currencies[0].name}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.currencies[0].name
+            }</p>
           </h3>
           <h3 class="country-details__info__subHeading">
             language:
-            <p class="country-details__info__subHeading__paragraph">${country.languages[0].name}</p>
+            <p class="country-details__info__subHeading__paragraph">${
+              country.languages[0].name
+            }</p>
           </h3>
          
         </div>
@@ -141,10 +203,10 @@ class View {
         border countries:
           </h3>
           <div class="block">
-          <a href="#" class="country-details__border__country light-mode-bg" id="border-country" >${country.borders[0]}</a>
-          <a href="#" class="country-details__border__country light-mode-bg" id="border-country" >france</a>
-          <a href="#" class="country-details__border__country light-mode-bg" id="border-country" >france</a>
-          </div>
+          ${!borders[0] ? "" : borders[0]}
+          ${!borders[1] ? "" : borders[1]}
+          ${!borders[2] ? "" : borders[2]}
+         </div>
         </div>
         <!-- border countries -->
       </article>
@@ -152,6 +214,14 @@ class View {
       </main>
   `;
     document.body.insertAdjacentHTML("beforeend", markup);
+  }
+
+  toggleCountriesDarkmode(elements, header) {
+    elements.forEach((element) => {
+      header.classList.contains("dark-mode-bg")
+        ? element.classList.add("dark-mode-bg")
+        : element.classList.remove("dark-mode-bg");
+    });
   }
 
   //
