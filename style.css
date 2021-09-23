@@ -420,20 +420,18 @@ a {
 
 .header {
   width: 100%;
-  display: grid;
-  justify-items: center;
-  place-items: center;
-}
-
-.header--center {
-  width: 90vw;
   height: 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 4.4%;
 }
-.header--center--center__heading {
-  margin: 1.3rem;
+.header--center__heading {
+  margin: 1.3rem 0;
+}
+
+.header--center {
+  width: 90vw;
 }
 
 .section {
