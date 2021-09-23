@@ -21,33 +21,18 @@ const section = document.querySelector(".section");
 // _______________________________________________________
 
 // _______________________________________________________
-
-const renderThreeBorderCountries = async function (country) {
-  // clear the border countries block
-  const block = document.querySelector(".block");
-  block.textContent = "";
-  // render only three countries
-  country.borders.forEach(async (border, i) => {
-    if (i > 2) return;
-    await model.getCountryByCode(border);
-    let realName = await model.app.countryByCode[i];
-    block.insertAdjacentHTML(
-      "afterbegin",
-      `  <a href="#" class="country-details__border__country light-mode-bg" id="border-country" data-name='${
-        realName.name.split(" ")[0]
-      }' >${realName.name.split(" ")[0]}</a>`
-    );
-  });
-};
-// _______________________________________________________
-
-// _______________________________________________________
-const showCountry = function (country, visibel = "none") {
+const showCountry = function (country, display = "none") {
   country.addEventListener("click", async function (e) {
     e.preventDefault();
     // hide or show main and section
-    main.style.display = visibel;
-    section.style.display = visibel;
+    main.style.display = display;
+    section.style.display = display;
+
+    if (display === "grid") {
+      e.currentTarget.style.display = "none";
+      document.querySelector(".main-country").style.display = "none";
+      return;
+    }
     // ftech the country by the name
     await model.getCountryByName(e.currentTarget.dataset.name);
     const countryModel = await model.app.countryByName;
@@ -144,10 +129,12 @@ const observeCountry = function () {
   const config = { attributes: true, childList: true, subtree: true };
 
   // Callback function to execute when mutations are observed
-  const callback = function (mutationsList, observer) {
+  const callback = function () {
     if (!document.querySelector(".main-country")) return;
     const borderCountries = document.querySelectorAll("#border-country");
+    const backBtn = document.querySelector("#back-btn");
     hideCountriesAndShowCountry(borderCountries);
+    showCountry(backBtn, "grid");
   };
 
   // Create an observer instance linked to the callback function
@@ -174,14 +161,3 @@ const init = async function () {
 };
 init();
 // _______________________________________________________
-// const countriesName = async function (countries, string) {
-//   const names = [];
-//   countries.forEach((country) => {
-//     const code = country.alpha3Code;
-//     const name = country.name;
-//     names.push([code, name]);
-//   });
-
-//   console.log(names.find((a) => a[0] === string)[1]);
-// };
-// countriesName(await model.app.countries, "AFG");
