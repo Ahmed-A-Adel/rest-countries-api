@@ -17,7 +17,6 @@ class View {
     if (search) elements = [select, selectBtn, search];
     if (search && backBtn)
       elements = [select, selectBtn, search, backBtn, ...borderCounties];
-    console.log(elements);
     return elements;
   }
 
@@ -63,10 +62,9 @@ class View {
         const name = country.name;
         names.push([code, name]);
       });
-
-      return names.find((a) => a[0] === string)[1];
+      return names.find((a) => a[0] === string);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
   renderThreeBorderCountries(borders) {
@@ -74,18 +72,19 @@ class View {
     // render only three countries
     borders?.forEach((border, i) => {
       if (i > 2) return;
-      let realName = this.countriesName(this.countries, border);
 
+      let realName = this.countriesName(this.countries, border);
       borderCountries.push(
         `<a href="#" class="country-details__border__country light-mode-bg" id="border-country" data-name='${
-          realName.split(" ")[0]
-        }'>${realName.split(" ")[0]}</a>`
+          realName[1].split(" ")[0]
+        }'>${realName[1].split(" ")[0]}</a>`
       );
     });
     return borderCountries;
   }
   renderCountries(countries) {
-    this.countries = countries;
+    if (countries.length > 148) this.countries = countries;
+
     this.main.textContent = "";
     const countryNames = [];
     countries.forEach((country) => {
@@ -125,6 +124,7 @@ class View {
     this.countryNames = countryNames;
   }
   renderCountry(country) {
+    console.log(country);
     const borders = this.renderThreeBorderCountries(country.borders);
     const population = new Intl.NumberFormat("de-DE").format(
       Number(country.population)
@@ -170,7 +170,7 @@ class View {
           <h3 class="country-details__info__subHeading">
             sub region:
             <p class="country-details__info__subHeading__paragraph">${
-              country.subregion
+              country.regionalBlocs[0]?.name
             }</p>
           </h3>
           <h3 class="country-details__info__subHeading">

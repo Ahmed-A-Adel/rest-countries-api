@@ -29,7 +29,7 @@ const showCountry = function (country, display = "none") {
     main.style.display = display;
     section.style.display = display;
 
-    if (display === "grid") {
+    if (display === "") {
       e.currentTarget.style.display = "none";
       document.querySelector(".main-country").style.display = "none";
       // toggle darkmode
@@ -124,7 +124,7 @@ const observeCountry = function () {
     const borderCountries = document.querySelectorAll("#border-country");
     const backBtn = document.querySelector("#back-btn");
     hideCountriesAndShowCountry(borderCountries);
-    showCountry(backBtn, "grid");
+    showCountry(backBtn, "");
   };
 
   // Create an observer instance linked to the callback function
