@@ -70,7 +70,7 @@ class View {
   renderThreeBorderCountries(borders) {
     const borderCountries = [];
     // render only three countries
-    borders.forEach((border, i) => {
+    borders?.forEach((border, i) => {
       if (i > 2) return;
       let realName = this.countriesName(this.countries, border);
 
@@ -96,8 +96,8 @@ class View {
             <div class="country__image-container">
               <img
               class="country__image-container__img"
-              src="${country.flag}"
-              alt="the ${country.name} flag"
+              src="${country.flags[0]}"
+              alt="${country.name} flag"
               />
             </div>
             <div class="country__info">
@@ -139,7 +139,7 @@ class View {
       
           <img
           class="country-image__img"
-          src="${country.flag}"
+          src="${country.flags[0]}"
           alt="${country.name} flag"
           />
       </article>

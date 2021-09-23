@@ -19,15 +19,16 @@ export const getJson = async function (url) {
 // get all countries
 // _________________________________________________________________________________
 export const getCountries = async function () {
-  app.countries = getJson("https://restcountries.eu/rest/v2/all");
+  app.countries = getJson("https://restcountries.com/v2/all");
 };
+
 // _________________________________________________________________________________
 
 // get countries by region
 // _________________________________________________________________________________
 export const getCountriesByRegion = async function (region) {
   app.countryByRegion = getJson(
-    `https://restcountries.eu/rest/v2/region/${region}`
+    `https://restcountries.com/v2/continent/${region}`
   );
 };
 // _________________________________________________________________________________
@@ -36,7 +37,7 @@ export const getCountriesByRegion = async function (region) {
 // _________________________________________________________________________________
 export const getCountryByName = async function (countryName) {
   app.countryByName = getJson(
-    `https://restcountries.eu/rest/v2/name/${countryName}`
+    `https://restcountries.com/v2/name/${countryName}`
   );
 };
 // _________________________________________________________________________________
@@ -44,8 +45,6 @@ export const getCountryByName = async function (countryName) {
 // get country by code
 // _________________________________________________________________________________
 export const getCountryByCode = async function (code) {
-  app.countryByCode.push(
-    getJson(`https://restcountries.eu/rest/v2/alpha/${code}`)
-  );
+  app.countryByCode.push(getJson(`https://restcountries.com/v2/alpha/${code}`));
 };
 // _________________________________________________________________________________
