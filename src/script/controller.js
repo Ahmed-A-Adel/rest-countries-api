@@ -24,6 +24,7 @@ const section = document.querySelector(".section");
 const showCountry = function (country, display = "none") {
   country.addEventListener("click", async function (e) {
     e.preventDefault();
+
     // hide or show main and section
     main.style.display = display;
     section.style.display = display;
@@ -31,6 +32,9 @@ const showCountry = function (country, display = "none") {
     if (display === "grid") {
       e.currentTarget.style.display = "none";
       document.querySelector(".main-country").style.display = "none";
+      // toggle darkmode
+      const elements = view.elements();
+      view.toggleCountriesDarkmode(elements, header);
       return;
     }
     // ftech the country by the name
@@ -44,10 +48,6 @@ const showCountry = function (country, display = "none") {
     }
     // render the country
     await view.renderCountry(country);
-
-    //render only three border countries
-    // renderThreeBorderCountries(country);
-
     // toggle darkmode
     const elements = view.elements();
     view.toggleCountriesDarkmode(elements, header);
@@ -67,16 +67,6 @@ const countryController = function () {
   const countries = document.querySelectorAll(".country");
   hideCountriesAndShowCountry(countries);
 };
-// _______________________________________________________
-
-// _______________________________________________________
-// const toggleCountriesDarkmode = function (countries) {
-//   countries.forEach((country) => {
-//     header.classList.contains("dark-mode-bg")
-//       ? country.classList.add("dark-mode-bg")
-//       : country.classList.remove("dark-mode-bg");
-//   });
-// };
 // _______________________________________________________
 
 // _______________________________________________________

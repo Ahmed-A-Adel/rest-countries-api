@@ -12,13 +12,16 @@ class View {
     const select = document.querySelector("#select");
     const borderCounties = document.querySelectorAll("#border-country");
     const backBtn = document.querySelector(".back-btn");
-    const elements = backBtn
-      ? [backBtn, ...borderCounties]
-      : [select, selectBtn, search];
+    let elements;
+    if (backBtn) elements = [backBtn, ...borderCounties];
+    if (search) elements = [select, selectBtn, search];
+    if (search && backBtn)
+      elements = [select, selectBtn, search, backBtn, ...borderCounties];
+    console.log(elements);
     return elements;
   }
 
-  toggleDarkMode(element, elements) {
+  toggleDarkMode() {
     const modeSwitcher = document.querySelector(".mode-switcher");
     modeSwitcher.addEventListener("click", this.darkmodeHelper.bind(this));
   }
@@ -28,7 +31,6 @@ class View {
     e.currentTarget.classList.toggle("dark-mode");
     const countries = document.querySelectorAll(".country");
     const icon = e.currentTarget.querySelector(".fas");
-    const elements = this.elements();
 
     // switch between sun icon and moon icon
     icon.classList.toggle("fa-sun");
@@ -40,7 +42,7 @@ class View {
     this.header.classList.toggle("dark-mode-bg");
     // toggle darkmode class depandes on the header element
     this.toggleCountriesDarkmode(countries, this.header);
-    this.toggleCountriesDarkmode(elements, this.header);
+    this.toggleCountriesDarkmode(this.elements(), this.header);
 
     // select the body and toggle it with the .dark-mode-body class
     document.body.classList.toggle("dark-mode-body");
