@@ -232,6 +232,34 @@ h3:nth-of-type(9) {
   margin-bottom: 2rem;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading__spinner {
+  content: "";
+  width: 5rem;
+  height: 5rem;
+  border: 1rem solid transparent;
+  border-radius: 50%;
+  border-top: 1rem solid #111517;
+  animation: loading 1s ease-in-out infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.light-mode--border-top {
+  border-top-color: white;
+}
+
 body {
   font-size: 14px;
   font-family: "Nunito Sans", sans-serif;

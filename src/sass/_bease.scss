@@ -55,6 +55,11 @@ $main-transition: all 0.2s ease;
   -moz-box-shadow: 11px 11px 6px -10px rgba(0, 0, 0, 0);
   transition: $main-transition;
 }
+@mixin centerElement {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 // ___________________________________________________________
 
 // _________________________________________________
@@ -76,6 +81,7 @@ $main-transition: all 0.2s ease;
   background: $Very-Dark-Blue;
   color: $White;
 }
+
 // ___________________________________________________________
 // :not(img) {
 //   background: white;

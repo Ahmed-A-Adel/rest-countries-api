@@ -33,6 +33,10 @@ class View {
 
     // switch between sun icon and moon icon
     icon.classList.toggle("fa-sun");
+
+    // toggel darkmode on loading spinner
+    const spinner = document.querySelector(".loading__spinner");
+    spinner.classList.toggle("light-mode--border-top");
     // toggle the dark and the light mode text content
     icon.parentElement.nextElementSibling.textContent === "dark mode"
       ? (icon.parentElement.nextElementSibling.textContent = "light mode")
@@ -96,7 +100,7 @@ class View {
           <article class="country light-mode-bg " data-name='${country.name}'>
             <div class="country__image-container">
               <img
-              class="country__image-container__img"
+              class="country__image-container__img img"
               src="${country.flags[0]}"
               alt="${country.name} flag"
               />
@@ -124,7 +128,6 @@ class View {
     this.countryNames = countryNames;
   }
   renderCountry(country) {
-    console.log(country);
     const borders = this.renderThreeBorderCountries(country.borders);
     const population = new Intl.NumberFormat("de-DE").format(
       Number(country.population)
@@ -140,7 +143,7 @@ class View {
       <article class="country-image ">
       
           <img
-          class="country-image__img"
+          class="country-image__img img"
           src="${country.flags[0]}"
           alt="${country.name} flag"
           />
@@ -169,9 +172,7 @@ class View {
           </h3>
           <h3 class="country-details__info__subHeading">
             sub region:
-            <p class="country-details__info__subHeading__paragraph">${
-              country.regionalBlocs[0]?.name
-            }</p>
+            <p class="country-details__info__subHeading__paragraph"></p>
           </h3>
           <h3 class="country-details__info__subHeading">
             capital:

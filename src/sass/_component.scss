@@ -187,3 +187,28 @@ h3:nth-of-type(5) {
 h3:nth-of-type(9) {
   margin-bottom: 2rem;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  @include centerElement;
+}
+.loading__spinner {
+  content: "";
+  width: 5rem;
+  height: 5rem;
+  border: 1rem solid transparent;
+  border-radius: 50%;
+  border-top: 1rem solid $Very-Dark-Blue;
+  // border-top: 1rem solid $White;
+  animation: loading 1s ease-in-out infinite;
+}
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.light-mode--border-top {
+  border-top-color: $White;
+}

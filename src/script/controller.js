@@ -14,6 +14,7 @@ const backBtn = document.querySelector(".back-btn");
 const mainCountry = document.querySelector(".main-country");
 const main = document.querySelector(".main");
 const section = document.querySelector(".section");
+const loading = document.querySelector(".loading");
 // _______________________________________________________
 
 // _______________________________________________________
@@ -37,6 +38,10 @@ const showCountry = function (country, display = "none") {
       view.toggleCountriesDarkmode(elements, header);
       return;
     }
+    // add loading spinner
+
+    loading.style.display = "";
+
     // ftech the country by the name
     await model.getCountryByName(e.currentTarget.dataset.name);
     const countryModel = await model.app.countryByName;
@@ -46,6 +51,9 @@ const showCountry = function (country, display = "none") {
       document.querySelector(".main-country").remove();
       document.querySelector("#back-btn").remove();
     }
+    // remove loading spinner
+    loading.style.display = "none";
+
     // render the country
     await view.renderCountry(country);
     // toggle darkmode
@@ -82,8 +90,16 @@ const searchController = async function () {
   search.addEventListener("input", async function (e) {
     const value = e.currentTarget.value;
     if (!value || value > 1) return;
+
+    // add loading spinner
+    loading.style.display = "";
+
     await model.getCountryByName(value);
     const modelCountries = await model.app.countryByName;
+
+    // remove loading spinner
+    loading.style.display = "none";
+
     await view.renderCountries(modelCountries);
     const countries = document.querySelectorAll(".country");
 
@@ -98,8 +114,16 @@ const selectController = async function () {
   select.addEventListener("click", async function (e) {
     const value = e.target.textContent;
     if (!value || value > 1) return;
+
+    // add loading spinner
+    loading.style.display = "";
+
     await model.getCountriesByRegion(value);
     const modelCountries = await model.app.countryByRegion;
+
+    // remove loading spinner
+    loading.style.display = "none";
+
     await view.renderCountries(modelCountries);
     const countries = document.querySelectorAll(".country");
 
@@ -142,6 +166,7 @@ const observeCountry = function () {
 const init = async function () {
   await model.getCountries();
   const countries = await model.app.countries;
+  loading.style.display = "none";
   await view.renderCountries(countries);
   selectController();
   searchController();
