@@ -120,10 +120,8 @@ const selectController = async function () {
 
     await model.getCountriesByRegion(value);
     const modelCountries = await model.app.countryByRegion;
-
     // remove loading spinner
     loading.style.display = "none";
-
     await view.renderCountries(modelCountries);
     const countries = document.querySelectorAll(".country");
 

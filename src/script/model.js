@@ -28,7 +28,7 @@ export const getCountries = async function () {
 // _________________________________________________________________________________
 export const getCountriesByRegion = async function (region) {
   app.countryByRegion = getJson(
-    `https://restcountries.com/v2/continent/${region}`
+    `https://restcountries.com/v2/region/${region}`
   );
 };
 // _________________________________________________________________________________

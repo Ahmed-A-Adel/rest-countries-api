@@ -101,7 +101,9 @@ class View {
             <div class="country__image-container">
               <img
               class="country__image-container__img img"
-              src="${country.flags[0]}"
+              src="${
+                country.name === "Andorra" ? country.flags.png : country.flag
+              }"
               alt="${country.name} flag"
               />
             </div>
@@ -113,11 +115,15 @@ class View {
             </h3>
             <h3 class="country__info__subHeading">
               region:
-              <p class="country__info__subHeading__paragraph">${country.region}</p>
+              <p class="country__info__subHeading__paragraph">${
+                country.region
+              }</p>
             </h3>
             <h3 class="country__info__subHeading">
               language:
-              <p class="country__info__subHeading__paragraph">${country.languages[0].name}</p>
+              <p class="country__info__subHeading__paragraph">${
+                country.languages[0].name
+              }</p>
             </h3>
           </div>
         </article>
@@ -144,7 +150,7 @@ class View {
       
           <img
           class="country-image__img img"
-          src="${country.flags[0]}"
+          src="${country.flag}"
           alt="${country.name} flag"
           />
       </article>

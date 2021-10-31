@@ -98,6 +98,10 @@
     @include box-shadow;
   }
   &__image-container {
+    width: 292px;
+    height: 240px;
+    background: #dedede;
+
     &__img {
       display: block;
       width: 100%;
